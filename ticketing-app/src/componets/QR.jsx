@@ -15,7 +15,7 @@ const QR = () => {
   const { firstName, lastName } = userDetails;
 
   // Create the URL with user details as query parameters
-  const qrUrl = `/user-profile?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+  const qrUrl = `/profile?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
 
   const downloadeQrCode = () => {
     const svg = document.getElementById("qr-gen");
