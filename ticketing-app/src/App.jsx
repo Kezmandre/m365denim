@@ -22,7 +22,7 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<SignUpPage/>} />
           <Route path="/qrcode" element={<QRCodePage/>} />
-          <Route path="/user/:id" element={<UserCardPage />} />
+          <Route path="/user/:username" element={<UserCardPage />} />
           <Route path="/scan" element={<QRCodeScanner/>}/>
         </Routes>
       </div>
