@@ -8,6 +8,10 @@ import Home from "./Page/Home";
 import QR from "./componets/QR";
 import UserProfile from "./componets/profile";
 import QRCodeScanner from "./componets/QRcodeScanner";
+import SignUpPage from "./componets/Reg";
+import QRCodePage from "./componets/Code";
+import UserCard from "./componets/Card";
+import UserCardPage from "./componets/Carder";
 
 
 export function App() {
@@ -16,9 +20,9 @@ export function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegistrationForm />} />
-          <Route path="/qrcode" element={<QR/>} />
-          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/register" element={<SignUpPage/>} />
+          <Route path="/qrcode" element={<QRCodePage/>} />
+          <Route path="/user/:id" element={<UserCardPage />} />
           <Route path="/scan" element={<QRCodeScanner/>}/>
         </Routes>
       </div>
