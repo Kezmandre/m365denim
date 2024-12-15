@@ -84,7 +84,7 @@ const RegistrationForm = () => {
         <div className="w-[95%] mx-auto">
           <button
             onClick={handleRegistration}
-            className="p-4 mt-4 w-full bg-red-500 rounded-lg outline-none text-xl"
+            className="p-4 mt-4 w-full text-white bg-red-500 rounded-lg outline-none text-xl"
           >
             Register
           </button>

@@ -42,7 +42,7 @@ const QR = () => {
         <div className="w-[200px] mx-auto">
           <button
             onClick={downloadeQrCode}
-            className="w-full bg-green-300 rounded-lg text-semibold mb-3"
+            className="w-full bg-green-300 p-2 font-semibold rounded-lg text-semibold mb-3"
           >
             Download QRCode
           </button>

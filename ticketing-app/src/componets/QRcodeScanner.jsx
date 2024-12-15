@@ -1,43 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { Html5QrcodeScanner } from "html5-qrcode";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
-const QRCodeScanResult = () => {
-  const location = useLocation();
+const QRCodeScanner = () => {
   const navigate = useNavigate();
-  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const { state } = location;
-    if (state && state.qrData) {
-      try {
-        const userData = JSON.parse(state.qrData); // Parse the QR code data
-        setUserDetails(userData);
-      } catch (error) {
-        console.error("Invalid QR code data", error);
-        navigate("/register");
-      }
-    } else {
-      navigate("/register");
-    }
-  }, [location, navigate]);
+    // Initialize the QR Code scanner
+    const scanner = new Html5QrcodeScanner("qr-scanner", {
+      fps: 10, // Frames per second
+      qrbox: 250, // Size of the QR scanning box
+    });
 
-  if (!userDetails) return <div>Loading...</div>;
+    // Handle successful scan
+    const handleScanSuccess = (decodedText) => {
+      console.log("Decoded text:", decodedText);
 
-  const { firstName, lastName } = userDetails;
+      // Navigate to the scanned URL
+      navigate(decodedText);
+    };
+
+    // Start the scanner
+    scanner.render(handleScanSuccess, (errorMessage) => {
+      console.warn("Scan failed", errorMessage);
+    });
+
+    // Cleanup on unmount
+    return () => {
+      scanner.clear().catch((error) => {
+        console.error("Failed to clear QR scanner", error);
+      });
+    };
+  }, [navigate]);
 
   return (
-    <div className="w-[300px] h-auto mx-auto mt-8 bg-white rounded-xl shadow-2xl p-4">
-      <h2 className="text-center text-xl font-semibold">Welcome to the party, {firstName} {lastName}!</h2>
-      <div className="text-center mt-4">
-        <p className="italic">Here are your details:</p>
-        <div className="mt-2">
-          <p>Name: {firstName} {lastName}</p>
-          {/* Add other details if needed */}
-        </div>
-      </div>
+    <div className="w-full h-screen flex flex-col items-center justify-center">
+      <h2 className="text-center text-xl font-semibold mb-4">Scan QR Code</h2>
+      <div id="qr-scanner" className="w-[300px] h-[300px]"></div>
     </div>
   );
 };
 
-export default QRCodeScanResult;
+export default QRCodeScanner;

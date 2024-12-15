@@ -7,6 +7,7 @@ import Home from "./Page/Home";
 // import QRCodeScanner from "./component/QRcodeScanner";
 import QR from "./componets/QR";
 import UserProfile from "./componets/profile";
+import QRCodeScanner from "./componets/QRcodeScanner";
 
 
 export function App() {
@@ -18,7 +19,7 @@ export function App() {
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/qrcode" element={<QR/>} />
           <Route path="/profile" element={<UserProfile />} />
-          
+          <Route path="/scan" element={<QRCodeScanner/>}/>
         </Routes>
       </div>
     </Router>
