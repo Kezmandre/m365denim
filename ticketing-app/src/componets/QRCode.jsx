@@ -15,27 +15,37 @@ const QRCode = () => {
   const { firstName, lastName } = userDetails;
   const qrData = JSON.stringify(userDetails);
 
-  const navigateToScanResult = () => {
-    // Navigate to /scan-result and pass qrData as location state
-    navigate("/scan", { state: { qrData } });
-  };
-
   const downloadeQrCode = () => {
-    const svg = document.getElementById("qr-gen");
-    const svgData = new XMLSerializer().serializeToString(svg);
-    const svgBlob = new Blob([svgData], {
-      type: "image/svg+xml; charset=utf-8",
-    });
-    const svgUrl = URL.createObjectURL(svgBlob);
-    const link = document.createElement("a");
-    link.href = svgUrl;
-    link.download = `${firstName}-${lastName}-QRCode.svg`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    
+      const svg = document.getElementById("qr-gen");
+      const svgData = new XMLSerializer().serializeToString(svg);
+    
+      // Create an image from the SVG
+      const img = new Image();
+      img.src = "data:image/svg+xml;base64," + window.btoa(unescape(encodeURIComponent(svgData)));
+    
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        
+        // Create a PNG URL
+        const pngUrl = canvas.toDataURL("image/png");
+    
+        // Trigger the download
+        const link = document.createElement("a");
+        link.href = pngUrl;
+        link.download = `${firstName}-${lastName}-QRCode.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    
+    };
+    
   };
 
-  navigateToScanResult()
 
   return (
     <div className="w-[300px] h-auto mx-auto mt-8 bg-white rounded-xl shadow-2xl">
@@ -46,7 +56,7 @@ const QRCode = () => {
         <div className="w-[200px] mx-auto">
           <button
             onClick={downloadeQrCode}
-            className="w-full bg-green-300 rounded-lg text-semibold mb-3"
+            className="w-full bg-green-300 p-2 text-semibold rounded-lg text-semibold mb-3"
           >
             Download QRCode
           </button>

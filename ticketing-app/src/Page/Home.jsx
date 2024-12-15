@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import EventIntro from '../componets/EventIntro'
 import RegistrationForm from '../componets/RegistrationForm'
-import SignUpPage from '../componets/Reg'
+
 
 const Home = () => {
 
@@ -18,7 +18,7 @@ const Home = () => {
         {currentPage === 1 ? (
             <EventIntro OnNext={goToNext}/>
         ):(
-         <SignUpPage/>   
+         <RegistrationForm/>   
         )}
     </div>
   )
