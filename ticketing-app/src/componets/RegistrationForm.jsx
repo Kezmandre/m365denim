@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userDatabase as initialUserDatabase } from "./data"; // Assuming you have user data
 import Party from "../images/party.jpeg";
+import Cookies from 'js-cookie'; // Import js-cookie to manage cookies
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -23,6 +24,14 @@ const RegistrationForm = () => {
       return;
     }
 
+    // Check if user has already registered (across devices using cookie)
+    const alreadyRegistered = Cookies.get("alreadyRegistered");
+    if (alreadyRegistered) {
+      setErrorMessage("You have already registered.");
+      setTimeout(() => setErrorMessage(""), 5000);
+      return;
+    }
+
     // Find the matching user in the invitation list
     const matchedUser = userDatabase.find(
       (user) =>
@@ -37,7 +46,7 @@ const RegistrationForm = () => {
       return;
     }
 
-    // Check if the user has already registered
+    // Check if the user has already registered in the database
     if (matchedUser.registered === true) {
       setErrorMessage("You have already registered.");
       setTimeout(() => setErrorMessage(""), 5000);
@@ -49,6 +58,9 @@ const RegistrationForm = () => {
 
     // Persist the updated userDatabase to localStorage
     localStorage.setItem("userDatabase", JSON.stringify(userDatabase));
+
+    // Set a cookie to track the registration across devices
+    Cookies.set("alreadyRegistered", "true", { expires: 365 }); // Expires in 365 days
 
     const userDetails = {
       firstName: matchedUser.firstName,
