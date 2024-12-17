@@ -63,7 +63,7 @@ const RegistrationForm = () => {
     localStorage.setItem("userDatabase", JSON.stringify(userDatabase));
 
     // Set the registration flag in local storage (optional, for additional device-specific checks)
-    localStorage.setItem("userRegistrationFlag", "true");
+    // localStorage.setItem("userRegistrationFlag", "true");
 
     const userDetails = {
       firstName: matchedUser.firstName,
