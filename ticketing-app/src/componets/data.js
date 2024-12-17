@@ -6,5 +6,5 @@ export const userDatabase = [
   { firstName: "adetope", lastName: "aderogba", registered: "false" },
   { firstName: "joseph", lastName: "Adekuoroye", registered: "false" },
   { firstName: "adebimpe", lastName: "adebomi", registered: "false" },
-  { firstName: "joanne", lastName: "doe", registered: "false" },
+  { firstName: "joannes", lastName: "doe", registered: "false" },
 ];
