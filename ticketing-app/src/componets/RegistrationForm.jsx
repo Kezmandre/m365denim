@@ -19,6 +19,8 @@ const RegistrationForm = () => {
     const registrationFlag = localStorage.getItem("userRegistrationFlag");
     if (registrationFlag) {
       setErrorMessage("You have already registered.");
+      setTimeout(() => setErrorMessage(""), 5000);
+      return;
     }
   }, []);
 
