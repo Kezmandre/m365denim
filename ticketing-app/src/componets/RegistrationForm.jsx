@@ -46,7 +46,7 @@ const RegistrationForm = () => {
     }
 
     // Check if the user has already registered
-    if (matchedUser.registered) {
+    if (matchedUser.registered=== true) {
       setErrorMessage('You have already registered.');
       setTimeout(() => setErrorMessage(''), 5000);
       return;
