@@ -11,4 +11,6 @@ export const userDatabase = [
   { firstName: "Kolawole", lastName: "Adedipe", registered: false },
   { firstName: "Cornel", lastName: "Igbokwe", registered: false },
   { firstName: "Febishola", lastName: "Owoeye-wise", registered: false },
+  { firstName: "Confidence", lastName: "Duru", registered: false },
+  { firstName: "Martha", lastName: "Olaoye", registered: false },
 ];
