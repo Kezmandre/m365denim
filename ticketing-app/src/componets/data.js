@@ -7,4 +7,8 @@ export const userDatabase = [
   { firstName: "joseph", lastName: "Adekuoroye", registered: "false" },
   { firstName: "adebimpe", lastName: "adebomi", registered: "false" },
   { firstName: "joannes", lastName: "doe", registered: "false" },
+  { firstName: "Ahmed", lastName: "Alamutu", registered: false },
+  { firstName: "Kolawole", lastName: "Adedipe", registered: false },
+  { firstName: "Cornel", lastName: "Igbokwe", registered: false },
+  { firstName: "Febishola", lastName: "Owoeye-wise", registered: false },
 ];
