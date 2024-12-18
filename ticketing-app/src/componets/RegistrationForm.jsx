@@ -14,15 +14,15 @@ const RegistrationForm = () => {
     ...initialUserDatabase,
   ];
 
-  useEffect(() => {
-    // Check for existing registration flag in local storage
-    const registrationFlag = localStorage.getItem("userRegistrationFlag");
-    if (registrationFlag) {
-      setErrorMessage("You have already registered.");
-      setTimeout(() => setErrorMessage(""), 5000);
-      return;
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Check for existing registration flag in local storage
+  //   const registrationFlag = localStorage.getItem("userRegistrationFlag");
+  //   if (registrationFlag) {
+  //     setErrorMessage("You have already registered.");
+  //     setTimeout(() => setErrorMessage(""), 5000);
+  //     return;
+  //   }
+  // }, []);
 
   const handleRegistration = () => {
     // Clear any previous error messages
