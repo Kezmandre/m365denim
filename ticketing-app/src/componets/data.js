@@ -14,5 +14,5 @@ export const userDatabase = [
   { firstName: "Confidence", lastName: "Duru", registered: false },
   { firstName: "Martha", lastName: "Olaoye", registered: false },
   { firstName: "Henry", lastName: "Ijeh", registered: false },
-  
+  { firstName: "Akinwunmi", lastName: "Morakinyo", registered: false },
 ];
